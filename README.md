@@ -1,2 +1,2 @@
-# Bipolar-Microelectrode-Array-Image-Analysis
+# Automated-Image-Analysis-of-Bipolar-Microelectrode-Array-Data
 Mapping electrode response statistics using Python &amp; Imagej
