@@ -1,7 +1,6 @@
-# Automated-Image-Analysis-of-Bipolar-Microelectrode-Array-Data
+# Automated Image Analysis of Bipolar Microelectrode Array Data
 \
-**Mapping electrode response statistics using Python &amp; Imagej**
-
+**Spatially Mapping Electrode Response Data using Python & ImageJ**
 
 **Introduction** 
 
@@ -11,7 +10,7 @@ Without getting deep into the chemistry behind these experiments, we could monit
 
 Instead, there was clear demand for creating automated data pipelines to extract meaningful information and facilitate rapid interpretation of results. 
 
-Here I will share a critical process that served as the backbone for many experiment-specific use cases. That is: mapping specific values (such as summary statistics) of each respective electrode to an image displaying all electrode positions. This is easily adaptable, and often quite powerful. The scripts below were used to automate the data analysis, producing meaningful results in ~ 5 minutes. 
+Here I will share a critical process that served as the backbone for many experiment-specific use cases. That is: mapping specific values (such as summary statistics) of each respective electrode to an image displaying all electrode positions. This is easily adaptable, and often quite powerful. The scripts described below were used to automate the data analysis, producing meaningful results in ~ 5 minutes. 
 
 
 **Sample Input**
@@ -30,7 +29,7 @@ The data files exist as ~770 MB tiff stacks containing 1500 frames of 512 x 512 
 The analysis is split into two separate scripts: the first in Imagej (written in the Imagej macro language) to extract data from the tiff stack, followed by subsequent analysis in Python. 
 
 \
-** I. ImageJ Macro Language**
+**I. ImageJ Macro Language**
 
 The first step is to produce a thresholded image of electrode positions across the array. This will serve as the template for which values are mapped to in Python, and therefore it is critical that the product looks uniform, and representative of the original array. 
 
@@ -55,7 +54,7 @@ run("Invert");
 run("8-bit");
 run("Auto Local Threshold", "method=Median radius=5 parameter_1=0 parameter_2=0 white");
 ```
-***Insert Figure 2***
+**Insert Figure 2***
 \
 Figure 2 displays this process. [Label each with text above image] where Figure 2a shows a raw data frame; Figure 2b shows the result of the averaged frames improving the resolution; Figure 2c shows the inverted frame; and Figure 2d showing the result from thresholding.  We can see that the electrode shapes in Figure 2d closely represent the real structures in Figure 2b. 
 
@@ -87,7 +86,7 @@ saveAs("Results", Save_results);
 
 
 \
-** II. Python Analysis**
+**II. Python Analysis**
 
 In Python, we import both the thresholded image, and results data from the folders from which they were saved in Imagej. Note that filename_load and file_extension are defined identically as they were in imagej, and represent the only inputs for this program. 
 
@@ -286,6 +285,8 @@ Lastly, we plot our results with imshow() to display the mapped image, and use s
     plt.savefig(save_folder + 'Potential (mV) where Intensity larger ' + str(threshold) + '_Histogram' + '.png')
     plt.show()
 ``` 
+
+While a straightforward application is shown here, this mapping function is extremely valuable for visualizing data generated with our ECL output closed-bipolar microelectrode array. More specific use cases will become available as our research is published. 
 
 
 
