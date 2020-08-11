@@ -162,7 +162,7 @@ for i in range(len(df)):
 img_label_mod = img_label_mod - 10000 #Return ROI values to normal by removing offset.
 img_label_mod[img_label_mod < 0] = 0 #turn all non-matching values to 0. 
 
-print('Number of non-matching ROI centroids: ' + str(check) # Number of non-matching ROI centroids with img_labels.
+print('Number of non-matching ROI centroids: ' + str(check)) # Number of non-matching ROI centroids with img_labels.
 ```
 
 Lastly, I plot the before and after labeled image with imshow() to verify that the relabeled values create an image similar to the original. 
