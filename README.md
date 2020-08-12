@@ -19,7 +19,7 @@ Here I will share a critical process that served as the backbone for many experi
 \
 **Description of Code**
 
-The data files exist as ~770 MB tiff stacks containing 1500 frames of 512 x 512 pixels each. They monitor a stationary position containing ~6000 individual electrodes. 
+The data files exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 pixels each. They monitor a stationary position containing ~6000 individual electrodes. 
 
 The analysis is split into two separate scripts: the first in Imagej (written in the Imagej macro language) to extract data from the tiff stack, followed by subsequent analysis in Python. 
 
