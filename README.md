@@ -31,19 +31,19 @@ The first step is to produce a thresholded image of electrode positions across t
 We start by setting up local variables to enable automatic saving, used later in the script. Filename_load is simply the name of the tiff stack as a string, and file_extension is the path where the results will be saved. The specific path for the thresholded image (.tif) and results (.txt) are defined as well. 
 
 ```Java
-Filename_load = "Array 3;_2_days_later_5"
-file_extension = "F:/Data/ProgramOutput/" + Filename_load + "/" // extenstion for mkdir
+Filename_load = "ECL-CV Example; T12"
+file_extension = "E:/Data/ProgramOutput/" + Filename_load + "/" // extenstion for mkdir
 
 File.makeDirectory(file_extension)
 Save_threshold = file_extension + "thresh_" + Filename_load + ".tif"
 Save_results = file_extension + "Results_" + Filename_load + ".txt"
 ```
 
-The general strategy will be to average the pixel intensities across 100 non-light producing frames (typically found at the start of the video). This produces a sufficient-resolution image clearly showing the array’s structure. This image is then inverted to make the electrodes white with a dark background, converted to 8-bit, and then locally thresholded. Figure 2 displays this process.
+The general strategy will be to average the pixel intensities across 200 non-light producing frames (typically found at the start of the video). This produces a sufficient-resolution image clearly showing the array’s structure. This image is then inverted to make the electrodes white with a dark background, converted to 8-bit, and then locally thresholded. Figure 2 displays this process.
 
 ```Java
 selectWindow(Filename_load + ".tif");
-run("Duplicate...", "duplicate range=1-100");
+run("Duplicate...", "duplicate range=1-200");
 run("Z Project...", "projection=[Average Intensity]");
 run("Invert");
 run("8-bit");
@@ -68,7 +68,7 @@ The ROI’s are then identified from the thresholded image, applied to our (1500
 
 
 ```Java
-run("Analyze Particles...", "size=1-Infinity display clear add");
+run("Analyze Particles...", "size=5-Infinity display clear add");
 run("Set Measurements...", "mean centroid area_fraction stack display redirect=None decimal=3");
 roiManager("Associate", "false");
 roiManager("Centered", "false");
@@ -85,6 +85,11 @@ saveAs("Results", Save_results);
 In Python, we import both the thresholded image, and results data from the folders from which they were saved in Imagej. Note that filename_load and file_extension are defined identically as they were in imagej, and represent the only inputs for this program. 
 
 ```Python
+import numpy as np
+import pandas as pd 
+import matplotlib.pyplot as plt
+from skimage import io, measure
+
 filename_load = 'T2' #number on thresh, results files. 
 file_extension = "F:/Data/ProgramOutput/"
 
@@ -164,21 +169,28 @@ Lastly, I plot the before and after labeled image with imshow() to verify that t
 ```Python
 save_folder = file_extension + str(filename_load) + '/' 
 
-plt.figure(figsize=(15, 15))
+plt.figure(figsize=(12,12))
+plt.rcParams.update({'font.size': 22})
 plt.imshow(img_label)
 plt.colorbar()
 plt.title('Python-Labeled Thresholded Image')
+plt.xlabel('X Pixel')
+plt.ylabel('Y Pixel')
 plt.tight_layout()
 plt.savefig(save_folder + 'Python-Labeled Thresholded Image.png')
-plt.show()    
+plt.show()   
 
-plt.figure(figsize=(15,15))
+plt.figure(figsize=(12,12))
+plt.rcParams.update({'font.size': 22})
 plt.imshow(img_label_mod)
 plt.colorbar()
 plt.title('ROI-Labeled Thresholded Image')
+plt.xlabel('X Pixel')
+plt.ylabel('Y Pixel')
 plt.tight_layout()
 plt.savefig(save_folder + 'Reassigned Python Thresholded Image.png')
 plt.show()
+
 ```
 **See Attached Electrode Maps Before and After Reassigning Labels**
 ![alt text](https://github.com/Pdefnet/Image-Analysis-of-Bipolar-Microelectrode-Array-Data/blob/master/Mapped%20Labels%3B%20Before%20and%20After%20Reassigned%20by%20Python.tif)
@@ -264,6 +276,7 @@ Lastly, we plot our results with imshow() to display the mapped image, and use s
 
 ```Python
     plt.figure(figsize=(12,12))
+    plt.rcParams['figure.dpi'] = 300 #needed to prevent pixelation of electrodes 
     plt.rcParams.update({'font.size': 22})
     plt.imshow(map_threshold_mV, cmap= 'jet_r', vmin = save.mv.min()) #Scales so that colorbar min = first threshold.
     plt.colorbar()
@@ -273,9 +286,10 @@ Lastly, we plot our results with imshow() to display the mapped image, and use s
     plt.tight_layout()
     plt.savefig(save_folder + 'Potential (mV) with Intensity larger' + str(threshold) + ' Scaled to show variation'+ '.png')
     plt.show()
-
-    plt.figure(figsize=(8,8))
-    plt.rcParams.update({'font.size': 20})
+    
+    plt.figure(figsize=(10,10))
+    plt.rcParams['figure.dpi'] = 300 #needed to prevent pixelation of electrodes     
+    plt.rcParams.update({'font.size': 22})
     sns.distplot(save.mv, color = 'k', kde=False, bins = abs(int(save.mv.max() - save.mv.min()))) #1 bin per frame
     plt.xlabel('Potential (mV)')
     plt.ylabel('# of Electrodes')
@@ -283,6 +297,9 @@ Lastly, we plot our results with imshow() to display the mapped image, and use s
     plt.tight_layout()
     plt.savefig(save_folder + 'Potential (mV) where Intensity larger ' + str(threshold) + '_Histogram' + '.png')
     plt.show()
+
+    
+map_threshold(df_sort, 1000) #intensity
 ``` 
 
 While a straightforward application is shown here, this mapping function is extremely valuable for visualizing data generated with our ECL output closed-bipolar microelectrode array. More specific use cases will become available as our research is published. 
