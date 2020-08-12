@@ -211,7 +211,7 @@ df_sort = df.sort_values(['ROI', 'Slice'], ascending = (True, True))
 **Example Application of Mapping Electrode Data: Quantifying Electrode Uniformity**
 
 \
-**See Attached Example Output**
+**See Example Output**
 ![alt text](https://github.com/Pdefnet/Image-Analysis-of-Bipolar-Microelectrode-Array-Data/blob/master/Example%20Output.tif)
 
 
