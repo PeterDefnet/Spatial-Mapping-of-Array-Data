@@ -54,7 +54,9 @@ run("Invert");
 run("8-bit");
 run("Auto Local Threshold", "method=Median radius=5 parameter_1=0 parameter_2=0 white");
 ```
-**Insert Figure 2***
+**See Attached Figure 2**
+![alt text](https://github.com/Pdefnet/Image-Analysis-of-Bipolar-Microelectrode-Array-Data/blob/master/Figure%202.tif)
+
 \
 Figure 2 displays this process. [Label each with text above image] where Figure 2a shows a raw data frame; Figure 2b shows the result of the averaged frames improving the resolution; Figure 2c shows the inverted frame; and Figure 2d showing the result from thresholding.  We can see that the electrode shapes in Figure 2d closely represent the real structures in Figure 2b. 
 
