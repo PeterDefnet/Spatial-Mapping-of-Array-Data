@@ -24,7 +24,7 @@ The data files exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 
 The analysis is split into two separate scripts: the first in Imagej (written in the Imagej macro language) to extract data from the tiff stack, followed by subsequent analysis in Python. 
 
 \
-**I. ImageJ Macro**
+**I. ImageJ Macro:  "ImageJ; ECL-CV Analysis Github.ijm"**
 
 The first step is to produce a thresholded image of electrode positions across the array. This will serve as the template for which values are mapped to in Python, and therefore it is critical that the product looks uniform, and representative of the original array. 
 
@@ -80,7 +80,7 @@ saveAs("Results", Save_results);
 
 
 \
-**II. Python Analysis**
+**II. Python Analysis:  "Python; ECL-CV Analysis Github.py"**
 
 In Python, we import both the thresholded image, and results data from the folders from which they were saved in Imagej. Note that filename_load and file_extension are defined identically as they were in imagej, and represent the only inputs for this program. 
 
