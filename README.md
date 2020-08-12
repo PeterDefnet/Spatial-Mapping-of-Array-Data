@@ -12,13 +12,8 @@ Instead, there was clear demand for creating automated data pipelines to extract
 
 Here I will share a critical process that served as the backbone for many experiment-specific use cases. That is: mapping specific values (such as summary statistics) of each respective electrode to an image displaying all electrode positions. This is easily adaptable, and often quite powerful. The scripts described below were used to automate the data analysis, producing meaningful results in ~ 5 minutes. 
 
-
-**Sample Input**
-Figure
-\
-**Sample Output**
-Figure
-
+**Sample Output of Application Described Below**
+![alt text](https://github.com/Pdefnet/Image-Analysis-of-Bipolar-Microelectrode-Array-Data/blob/master/Example%20Output.tif)
 
 
 \
@@ -29,7 +24,7 @@ The data files exist as ~770 MB tiff stacks containing 1500 frames of 512 x 512 
 The analysis is split into two separate scripts: the first in Imagej (written in the Imagej macro language) to extract data from the tiff stack, followed by subsequent analysis in Python. 
 
 \
-**I. ImageJ Macro Language**
+**I. ImageJ Macro**
 
 The first step is to produce a thresholded image of electrode positions across the array. This will serve as the template for which values are mapped to in Python, and therefore it is critical that the product looks uniform, and representative of the original array. 
 
@@ -44,7 +39,7 @@ Save_threshold = file_extension + "thresh_" + Filename_load + ".tif"
 Save_results = file_extension + "Results_" + Filename_load + ".txt"
 ```
 
-The general strategy will be to average the pixel intensities across 100 non-light producing frames (typically found at the start of the video). This produces a sufficient-resolution image clearly showing the array’s structure. This image is then inverted to make the electrodes white with a dark background, converted to 8-bit, and then locally thresholded.  
+The general strategy will be to average the pixel intensities across 100 non-light producing frames (typically found at the start of the video). This produces a sufficient-resolution image clearly showing the array’s structure. This image is then inverted to make the electrodes white with a dark background, converted to 8-bit, and then locally thresholded. Figure 2 displays this process.
 
 ```Java
 selectWindow(Filename_load + ".tif");
@@ -56,9 +51,6 @@ run("Auto Local Threshold", "method=Median radius=5 parameter_1=0 parameter_2=0 
 ```
 **See Attached Figure 2**
 ![alt text](https://github.com/Pdefnet/Image-Analysis-of-Bipolar-Microelectrode-Array-Data/blob/master/Figure%202.tif)
-
-\
-Figure 2 displays this process. [Label each with text above image] where Figure 2a shows a raw data frame; Figure 2b shows the result of the averaged frames improving the resolution; Figure 2c shows the inverted frame; and Figure 2d showing the result from thresholding.  We can see that the electrode shapes in Figure 2d closely represent the real structures in Figure 2b. 
 
 Imagej offers many thresholding options, where “Auto Local Thresholding” produces the most uniform output (as opposed to applying a global threshold with “Auth Threshold”). In the GUI: selecting “Image -> Adjust -> Auto Local Threshold” and Method = “Try All”, conveniently produces a 3x3 array of results for 9 different thresholding methods. Here we selected “Median” and “Radius = 5” as producing the best uniformity for our image data – found after quick experimentation. 
 
@@ -188,6 +180,11 @@ plt.tight_layout()
 plt.savefig(save_folder + 'Reassigned Python Thresholded Image.png')
 plt.show()
 ```
+**See Attached Electrode Maps Before and After Reassigning Labels**
+![alt text](https://github.com/Pdefnet/Image-Analysis-of-Bipolar-Microelectrode-Array-Data/blob/master/Mapped%20Labels%3B%20Before%20and%20After%20Reassigned%20by%20Python.tif)
+
+
+
 
 From here, we know that the ROI values in ‘img_label_mod’ match the ROI values from the imagej results data, saved in ‘df_sort’. Therefore any analysis done on the data can be mapped back to its original position.
 
@@ -202,8 +199,8 @@ df_sort = df.sort_values(['ROI', 'Slice'], ascending = (True, True))
 **Example Application of Mapping Electrode Data: Quantifying Electrode Uniformity**
 
 
-**Example Output**
-
+**See Attached Example Output**
+![alt text](https://github.com/Pdefnet/Image-Analysis-of-Bipolar-Microelectrode-Array-Data/blob/master/Example%20Output.tif)
 
 
 Below I give a brief example of how powerful this mapping function can be. In experiments, it is often valuable to quantify the uniformity of the ECL response from the array. We measure this by sweeping the potential in cyclic voltammogram and mapping the potential each electrode surpasses a given intensity value. Ideally this distribution should be as narrow as possible, which indicates that each electrode has a uniform response. We define map_threshold() to perform this task. 
