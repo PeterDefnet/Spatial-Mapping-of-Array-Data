@@ -31,7 +31,7 @@ The first step is to produce a thresholded image of electrode positions across t
 We start by setting up local variables to enable automatic saving, used later in the script. Filename_load is simply the name of the tiff stack as a string, and file_extension is the path where the results will be saved. The specific path for the thresholded image (.tif) and results (.txt) are defined as well. 
 
 ```Java
-Filename_load = "ECL-CV Example; T12"
+Filename_load = "ECL-CV Example Data"
 file_extension = "E:/Data/ProgramOutput/" + Filename_load + "/" // extenstion for mkdir
 
 File.makeDirectory(file_extension)
