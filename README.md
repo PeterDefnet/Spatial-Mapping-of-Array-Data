@@ -1,4 +1,4 @@
-# Automated Image Analysis of Bipolar Microelectrode Array Data
+# Automated Image Analysis of Electrochemiluminescence Bipolar Microelectrode Array Data
 \
 **Spatially Mapping Electrode Response Data using Python & ImageJ**
 
