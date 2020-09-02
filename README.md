@@ -29,7 +29,7 @@ The analysis is split into two separate scripts: the first in Imagej (written in
 \
 
 
-**Please view the Jupyter Notebook (.ipynb) files for a complete explanation of how this program works.**
+**Please view the Jupyter Notebook (.ipynb) file for a complete explanation of how this code works.**
 
 
 
