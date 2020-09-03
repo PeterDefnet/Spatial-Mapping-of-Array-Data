@@ -6,9 +6,7 @@
 
 As part of my doctoral work at the University of Washington, I was fortunate to be able to use cutting-edge microfabricated devices called ‘bipolar microelectrode arrays’ to spatially map dynamic microscale electrochemical processes. 
 
-These allowed us to monitor the electrochemical activity from > 6000 electrodes simultaneously using a light-generating mechanism known as ‘electrogenerated chemiluminescence’ (ECL). Since the raw data exists as videos showing the intensity response from thousands of discrete electrodes, analyzing their individual behavior quickly becomes very repetitive and time intensive. 
-
-Instead, there was clear demand for creating automated data pipelines to extract meaningful information and facilitate rapid interpretation of results. 
+These allowed us to monitor the electrochemical activity from > 6000 electrodes simultaneously using a light-generating mechanism known as ‘electrogenerated chemiluminescence’ (ECL). Since the raw data exists as videos showing the intensity response from thousands of discrete electrodes, analyzing their individual behavior quickly becomes very repetitive and time intensive. Instead, there was clear demand for creating automated data pipelines to extract meaningful information and facilitate rapid interpretation of results. 
 
 Here I will share a critical process that served as the backbone for many experiment-specific use cases. That is: mapping specific values (such as summary statistics) of each respective electrode to an image displaying all electrode positions. This is easily adaptable, and often quite powerful. The scripts described below were used to automate the data analysis, producing meaningful results in ~ 5 minutes. 
 
