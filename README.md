@@ -21,7 +21,7 @@ The analysis is split into two separate scripts: the first in Imagej (written in
 
 
 \
-***Please view the included Jupyter Notebook (.ipynb) for a complete walkthrough of this project.**
+***Please view the included Jupyter Notebook for a complete walkthrough of this project.**
 
 
 
