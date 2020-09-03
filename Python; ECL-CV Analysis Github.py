@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jun 27 05:35:40 2020
-
-@author: Peter
-"""
-
-
 
 
 import numpy as np
