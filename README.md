@@ -20,7 +20,7 @@ The analysis is split into two separate scripts: the first in Imagej (written in
 
 
 \
-**Please view the included Jupyter Notebook (.ipynb) for a complete walkthrough of this code.**
+***Please view the included Jupyter Notebook (.ipynb) for a complete walkthrough of this code.**
 
 
 
