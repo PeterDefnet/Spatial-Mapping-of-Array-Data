@@ -41,8 +41,8 @@ res_sort.reset_index(drop=True, inplace=True)
 coords = res.drop_duplicates(['ROI'])
 
 df = coords[['ROI', 'X', 'Y']] 
-df['X'] = np.round(df.loc[:,'X'], decimals=0)
-df['Y'] = np.round(df.loc[:,'Y'], decimals=0)
+df.loc[:,'X'] = np.round(df.loc[:,'X'], decimals=0)
+df.loc[:,'Y'] = np.round(df.loc[:,'Y'], decimals=0)
 
 
 
