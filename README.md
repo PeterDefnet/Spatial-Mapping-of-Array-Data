@@ -39,12 +39,12 @@ The data pipeline is split into two separate scripts:
 1. The first script (in ImageJ, written in the ImageJ Macro Language): <br>
  -- Identifies the locations of each electrode <br>
  -- Extracts and saves their intensity over time data, labeled per location <br>
- -- Saves a thresholded image of the array (which serves as a blank canvas to map values onto). <br>
+ -- Saves a thresholded image of the array (which serves as a blank canvas to map values onto) <br>
 
 2. The second script (in Python): <br>
  -- Analyzes the intensity over time data from each location <br>
  -- Maps a specific value onto the thresholded image in its respective electrode location <br>
- -- Plots the mapped figures and histograms to interpret the results. <br>
+ -- Plots the mapped figures and histograms to interpret the results <br>
 
 <br>
 
