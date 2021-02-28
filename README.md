@@ -51,7 +51,7 @@ The data pipeline is split into two separate scripts:
 2. The second script (in Python): <br>
  -- Analyzes the intensity over time data from each location <br>
  -- Maps a specific value onto the thresholded image in its respective electrode location <br>
- -- Plots the mapped figures and histograms to interpret the results <br>
+ -- Plots the mapped figure and summary histograms to interpret the results <br>
 
 <br>
 
