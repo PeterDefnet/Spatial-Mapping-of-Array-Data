@@ -2,13 +2,10 @@
 
 **Introduction** 
 
-As part of my doctoral work at the University of Washington, I experimented with newly designed microfabricated devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. 
-
-Our lab had developed the wireless microscale device to allow >6000 electrodes to be monitored simultaneously using a light-generation mechanism as an indicator of their activity. This work improved the spatial resoluiton of similar devices in literature by over __ times. 
+As part of my doctoral work at the University of Washington, I experimented with newly designed microfabricated devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. Our lab had developed the wireless microscale devices to allow >6000 electrodes to be monitored simultaneously using a light-generation mechanism as the indicator of their activity. This work improved the spatial resoluiton of similar devices in literature by over __ times. 
 
 
 Yet, their usage posed a real challenge: How can we represent this complex video data recorded from >6000 unique locations in a digestable format? The ability to interpret where reactions were occurring was important, and thus an image mapping approach was used. 
-
 
 Therefore, I created a data pipeline that efficiently interprets light intensity data and maps summarized values to the respective locations from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
 
@@ -21,11 +18,9 @@ I designed the program to analyze the intensity data from each electrode, find a
 (See a brief example at the bottom).
 
 
-
-
 The data pipeline is split into two separate scripts: 
 
-1. The first is in ImageJ (written in the ImageJ Macro Language) and identifies the locations of each electrode, extracts and saves their intensity over time data, and saves a thresholded image of the array that is used to map values onto. 
+1. The first scipt is in ImageJ (written in the ImageJ Macro Language) and identifies the locations of each electrode, extracts and saves their intensity over time data, and saves a thresholded image of the array that is used to map values onto. 
 
 2. The second script (in Python) analyzes the intensity over time data from each location, and maps a summary statistic onto the thresholded image in its correct respective location. Histograms and heatmaps are used to interpret the results. 
 
@@ -33,10 +28,11 @@ The data pipeline is split into two separate scripts:
 The overall analysis time takes ~ 5 minutes to complete between both scripts. Yet, the final product generates an easily-interpretable visualization summarizing the critical results of the experiment.
 
 
+***Please view the included Jupyter Notebook for a detailed walkthrough of this project.**
+
 The data files exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 pixels.
 
 
-***Please view the included Jupyter Notebook for a detailed walkthrough of this project.**
 
 
 Brief Example: Results from a control experiment where a single electrocatalyst was deposited onto approximately half of the array. 
