@@ -20,6 +20,9 @@ Brief results from a control experiment are shown below. Here, we selectively co
 <Blank thresholded Image>
 <Mapped Thresholded Image>
   
+*Note that the same data is used in the walkthrough provided in this repository. The respective raw data files are included, which exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 pixels. 
+  
+
 
 The data pipeline is split into two separate scripts: 
 
@@ -32,8 +35,4 @@ The overall analysis time takes ~ 5 minutes to complete between both scripts. Ye
 
 
 ***Please view the included Jupyter Notebook for a detailed walkthrough of this project.**
-
-
-The data files exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 pixels.
-
 
