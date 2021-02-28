@@ -11,7 +11,6 @@ As part of my doctoral work at the University of Washington, I experimented with
 **Yet, their usage posed a real challenge: How can we represent the video data recorded from >6000 unique locations in a digestible format?** The ability to interpret _where_ reactions were occurring was necessary, and thus an image mapping approach was used. 
 
 <br>
-<br>
 
 **Solution Description**
 
@@ -23,7 +22,6 @@ In the example outlined here, we are using the array to screen electrocatalyst b
 
 I designed the code to find the potential at which the intensity surpasses a given threshold (turns on), and map that value back onto each electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). We can therefore examine the generated map and quickly determine if the electrocatalytic activity varies across the array.
 
-<br>
 <br>
 
 **Example Outputs**
@@ -37,7 +35,6 @@ Below are example outputs from the program:
 <Mapped Thresholded Image>
 <histogram mV result> 
   
- <br>
  <br>
  
  **Code Description**
