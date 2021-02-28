@@ -1,4 +1,4 @@
-**Spatially Mapping Bipolar ECL Microelectrode Array Data using Python & ImageJ**
+**Spatially Mapping Microelectrode Array Data using Python & ImageJ**
 
 <br>
 
