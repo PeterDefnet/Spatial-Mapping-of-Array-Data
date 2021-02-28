@@ -8,7 +8,7 @@ As part of my doctoral work at the University of Washington, I experimented with
 **Yet, their usage posed a real challenge: How can we represent the video data recorded from >6000 unique locations in a digestible format?** The ability to interpret _where_ reactions were occurring was necessary, and thus an image mapping approach was used. 
 
 
-To address this problem, I created a data pipeline that interprets light intensity data and maps summarized values to their respective electrodes. The code is easily adaptable to select which values to map, depending on their experimental importance. 
+To address this problem, I created a data pipeline that interprets light intensity data and maps summarized values to their respective electrode locations. The code is easily adaptable to select which values to map, depending on their experimental importance. 
 
 <br>
 
@@ -38,12 +38,12 @@ The data pipeline is split into two separate scripts:
 
 1. The first script (in ImageJ, written in the ImageJ Macro Language): <br>
  -- Identifies the locations of each electrode <br>
- -- Extracts and saves their intensity over time data <br>
+ -- Extracts and saves their intensity over time data, labeled per location <br>
  -- Saves a thresholded image of the array (which serves as a blank canvas to map values onto). <br>
 
 2. The second script (in Python): <br>
  -- Analyzes the intensity over time data from each location <br>
- -- Maps a specific value onto the thresholded image in its correct respective location <br>
+ -- Maps a specific value onto the thresholded image in its respective electrode location <br>
  -- Plots the mapped figures and histograms to interpret the results. <br>
 
 <br>
@@ -52,7 +52,7 @@ The overall analysis takes ~ 5 minutes to run both scripts, and the final produc
 
 <br>
 
-The raw data file is included in the repo, which exists as a ~750 MB tiff stack containing 1500 frames of 512 x 512 pixels.
+The raw data file is included in the repo, which exists as a ~750 MB tiff stack containing 1500 frames of 512 x 512 pixels each.
 
 <br> 
 
