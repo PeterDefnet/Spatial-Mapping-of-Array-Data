@@ -2,24 +2,46 @@
 
 **Introduction** 
 
-As part of my doctoral work at the University of Washington, I used cutting-edge microfabricated devices called ‘bipolar microelectrode arrays’ to spatially map microscale electrochemical processes. 
+As part of my doctoral work at the University of Washington, I experimented with newly designed microfabricated devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. 
 
-These allowed us to monitor the electrochemical activity from >6000 electrodes simultaneously using a light-generating mechanism known as ‘electrogenerated chemiluminescence’ (ECL). Since the raw data exists as videos showing the intensity response from thousands of discrete electrodes, analyzing their individual behavior quickly becomes very repetitive and time-intensive. Instead, there was a clear demand for creating automated data pipelines to facilitate the rapid interpretation of results. 
-
-Here I share a critical process that served as the backbone for many experiment-specific use cases. That is: mapping specific values (such as summary statistics) calculated from the output of each respective electrode to an image displaying all electrode positions. This is easily adaptable and often quite powerful. The scripts described below were used to automate the data analysis, producing meaningful results in ~ 5 minutes. 
+Our lab had developed the wireless microscale device to allow >6000 electrodes to be monitored simultaneously using a light-generation mechanism as an indicator of their activity. This work improved the spatial resoluiton of similar devices in literature by over __ times. 
 
 
-\
-**Brief Description of Data & Code**
-\
-The data files exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 pixels. They monitor a stationary position containing >6000 individual electrodes. 
-
-The analysis is split into two separate scripts: the first in Imagej (written in the Imagej macro language) to extract data from the tiff stack, followed by subsequent analysis in Python. 
+Yet, their usage posed a real challenge: How can we represent this complex video data recorded from >6000 unique locations in a digestable format? The ability to interpret where reactions were occurring was important, and thus an image mapping approach was used. 
 
 
+Therefore, I created a data pipeline that efficiently interprets light intensity data and maps summarized values to the respective locations from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
 
-\
+
+In the example outlined here, we are using the array to screen electrocatalyst behavior using an innovative experimental method. The result creates a distribution of different electrocatalyst materials across the array. We wanted to determine which electrode has the best electrocatalytic activity, and we did this by sweeping the potential in the catalytic conditions and monitoring at which potential light generation occurs from each electrode. The earlier the light turns on, the better electrocatalyst it is. 
+
+
+I designed the program to analyze the intensity data from each electrode, find at what potential the intensity surpasses a given threshold (turns on), and map that value back onto the electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). Therefore we can examine the product heatmap and easily determine which electrodes turned on at which potentials. 
+
+(See a brief example at the bottom).
+
+
+
+
+The data pipeline is split into two separate scripts: 
+
+1. The first is in ImageJ (written in the ImageJ Macro Language) and identifies the locations of each electrode, extracts and saves their intensity over time data, and saves a thresholded image of the array that is used to map values onto. 
+
+2. The second script (in Python) analyzes the intensity over time data from each location, and maps a summary statistic onto the thresholded image in its correct respective location. Histograms and heatmaps are used to interpret the results. 
+
+
+The overall analysis time takes ~ 5 minutes to complete between both scripts. Yet, the final product generates an easily-interpretable visualization summarizing the critical results of the experiment.
+
+
+The data files exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 pixels.
+
+
 ***Please view the included Jupyter Notebook for a detailed walkthrough of this project.**
 
 
+Brief Example: Results from a control experiment where a single electrocatalyst was deposited onto approximately half of the array. 
+
+<Brightfield of Array>
+<Blank thresholded Image>
+<Mapped Thresholded Image>
 
