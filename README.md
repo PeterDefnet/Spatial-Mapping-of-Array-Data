@@ -5,14 +5,14 @@
 As part of my doctoral work at the University of Washington, I experimented with newly designed microfabricated devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. Our lab had developed the wireless devices to allow >6000 electrodes to be monitored simultaneously using a light-generation mechanism as the indicator of their activity. Our work improved the spatial resoluiton compared with similar devices in literature by over 20 times. 
 
 
-**Yet, their usage posed a real challenge:** How can we represent this complex video data recorded from >6000 unique locations in a digestable format? The ability to interpret _where_ reactions were occurring was important, and thus an image mapping approach was used. 
+**Yet, their usage posed a real challenge: _How can we represent this complex video data recorded from >6000 unique locations in a digestable format?_** The ability to interpret **where** reactions were occurring was important, and thus an image mapping approach was used. 
 
 
 Therefore, I created a data pipeline that efficiently interprets light intensity data and maps summarized values to the respective locations from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
 
 <br>
 
-In the example outlined here, we are using the array to screen electrocatalyst behavior. For the sake of simplicity I've decided to demo this code with a control example: where half the array is coated with a known electrocatalyst material, and the other half is bare with a non-electrocatalytic surface. We simply wanted to know which electrodes demonstrated the best catalytic activity. This is accomplished by sweeping the potential in the cataltyic conditions and monitoring at which potential light generation occurs from each electrode. The earlier the light turns on, the better electrocatalyst it is. 
+In the example outlined here, we are using the array to screen electrocatalyst behavior. For the sake of simplicity I've decided to demo this code with a control example: where half the array is coated with a known electrocatalyst material, and the other half is bare with a non-electrocatalytic surface. We simply wanted to know which electrodes demonstrated the best electrocatalytic activity. This is accomplished by sweeping the potential in the cataltyic conditions and monitoring when light generation occurs from each electrode. The earlier the light turns on, the better electrocatalyst it is. 
 
 
 I designed the program to analyze the intensity data from each electrode, find at what potential the intensity surpasses a given threshold (turns on), and map that value back onto the electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). Therefore we can examine the generated map and easily determine which electrodes turned on at which potentials. 
