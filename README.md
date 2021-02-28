@@ -31,10 +31,10 @@ Brief results from a control experiment are shown below.
 
 The data pipeline is split into two separate scripts: 
 
-1. The first script is in ImageJ (written in the ImageJ Macro Language) and it: <br>
+1. The first script (in ImageJ, written in the ImageJ Macro Language): <br>
  -- Identifies the locations of each electrode <br>
  -- Extracts and saves their intensity over time data <br>
- -- Saves a thresholded image of the array that is used to map values onto. <br> <br>
+ -- Saves a thresholded image of the array that is used to map values onto. <br>
 
 2. The second script (in Python): <br>
  -- Analyzes the intensity over time data from each location <br>
