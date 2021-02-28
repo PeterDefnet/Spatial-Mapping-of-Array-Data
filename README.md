@@ -15,7 +15,7 @@ To address this problem, I created a data pipeline that interprets light intensi
 In the example outlined here, we are using the array to screen electrocatalyst behavior. For the sake of simplicity, I decided to demo this code with a control example: where half the array is coated with a known electrocatalyst material, and the other half is bare with a non-electrocatalytic surface. We simply wanted to know if our method could distinguish electrocatalytic activity. This is accomplished by sweeping the potential in the catalytic conditions and monitoring when light generation occurs from each electrode. The earlier the light turns on, the better electrocatalyst it is. 
 
 
-I designed the code to find the potential at which the intensity surpasses a given threshold (turns on), and map that value back onto each electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). We can therefore examine the generated map and quickly determine if the electrocatalytic activity varies across array electrodes.
+I designed the code to find the potential at which the intensity surpasses a given threshold (turns on), and map that value back onto each electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). We can therefore examine the generated map and quickly determine if the electrocatalytic activity varies across the array.
 
 
 
