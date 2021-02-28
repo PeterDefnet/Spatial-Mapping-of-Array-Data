@@ -4,7 +4,6 @@
 
 **Problem Context**
 
-<br>
 
 As part of my doctoral work at the University of Washington, I experimented with cutting-edge devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. Our lab had developed the wireless arrays to allow >6000 electrodes to be monitored simultaneously using generated light intensity as the indicator of their activity. Our work improved the spatial resolution compared with similar devices in literature by over 20 times. 
 
@@ -12,10 +11,10 @@ As part of my doctoral work at the University of Washington, I experimented with
 **Yet, their usage posed a real challenge: How can we represent the video data recorded from >6000 unique locations in a digestible format?** The ability to interpret _where_ reactions were occurring was necessary, and thus an image mapping approach was used. 
 
 <br>
+<br>
 
 **Solution Description**
 
-<br>
 
 To address this problem, I created a data pipeline that interprets light intensity data and maps summarized values to their respective electrode locations. The code is easily adaptable to select which values to map, depending on their experimental importance. 
 
@@ -25,11 +24,11 @@ In the example outlined here, we are using the array to screen electrocatalyst b
 I designed the code to find the potential at which the intensity surpasses a given threshold (turns on), and map that value back onto each electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). We can therefore examine the generated map and quickly determine if the electrocatalytic activity varies across the array.
 
 <br>
+<br>
 
 **Example Outputs**
 
 
-<br>
 
 Below are example outputs from the program:
 <Brightfield of Array>
@@ -43,7 +42,6 @@ Below are example outputs from the program:
  
  **Code Description**
  
- <br>
  
 
 The data pipeline is split into two separate scripts: 
