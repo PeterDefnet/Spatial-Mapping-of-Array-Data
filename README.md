@@ -8,7 +8,7 @@ As part of my doctoral work at the University of Washington, I experimented with
 **Yet, their usage posed a real challenge: _How can we represent the video data recorded from >6000 unique locations in a digestable format?_** The ability to interpret _where_ reactions were occurring was important, and thus an image mapping approach was used. 
 
 
-Therefore, I created a data pipeline that efficiently interprets light intensity data and maps summarized values to the respective locations from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
+I created a data pipeline that efficiently interprets light intensity data and maps summarized values to the respective locations from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
 
 <br>
 
