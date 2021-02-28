@@ -23,10 +23,11 @@ I designed the code to find the potential at which the intensity surpasses a giv
 
 <br>
 
-Brief results from a control experiment are shown below. 
+Below are example outputs from the program:
 <Brightfield of Array>
 <Blank thresholded Image>
 <Mapped Thresholded Image>
+<histogram mV result> 
   
  <br>
  <br>
