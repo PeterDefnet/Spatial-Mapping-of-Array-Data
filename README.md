@@ -15,8 +15,11 @@ In the example outlined here, we are using the array to screen electrocatalyst b
 
 I designed the program to analyze the intensity data from each electrode, find at what potential the intensity surpasses a given threshold (turns on), and map that value back onto the electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). Therefore we can examine the product heatmap and easily determine which electrodes turned on at which potentials. 
 
-(See a brief example at the bottom).
-
+Brief results from a control experiment are shown below. Here, we selectively coated half of the array with a single electrocatalyst.
+<Brightfield of Array>
+<Blank thresholded Image>
+<Mapped Thresholded Image>
+  
 
 The data pipeline is split into two separate scripts: 
 
@@ -30,14 +33,7 @@ The overall analysis time takes ~ 5 minutes to complete between both scripts. Ye
 
 ***Please view the included Jupyter Notebook for a detailed walkthrough of this project.**
 
+
 The data files exist as ~750 MB tiff stacks containing 1500 frames of 512 x 512 pixels.
 
-
-
-
-Brief Example: Results from a control experiment where a single electrocatalyst was deposited onto approximately half of the array. 
-
-<Brightfield of Array>
-<Blank thresholded Image>
-<Mapped Thresholded Image>
 
