@@ -5,7 +5,7 @@
 As part of my doctoral work at the University of Washington, I experimented with newly designed microfabricated devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. Our lab had developed the wireless devices to allow >6000 electrodes to be monitored simultaneously using generated light intensity as the indicator of their activity. Our work improved the spatial resoluiton compared with similar devices in literature by over 20 times. 
 
 
-**Yet, their usage posed a real challenge: _How can we represent the video data recorded from >6000 unique locations in a digestable format?_** The ability to interpret **where** reactions were occurring was important, and thus an image mapping approach was used. 
+**Yet, their usage posed a real challenge: _How can we represent the video data recorded from >6000 unique locations in a digestable format?_** The ability to interpret _where_ reactions were occurring was important, and thus an image mapping approach was used. 
 
 
 Therefore, I created a data pipeline that efficiently interprets light intensity data and maps summarized values to the respective locations from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
