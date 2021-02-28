@@ -8,14 +8,16 @@ As part of my doctoral work at the University of Washington, I experimented with
 **Yet, their usage posed a real challenge: _How can we represent the video data recorded from >6000 unique locations in a digestible format?_** The ability to interpret _where_ reactions were occurring was necessary, and thus an image mapping approach was used. 
 
 
-Therefore, I created a data pipeline that interprets light intensity data and maps summarized values to the respective locations from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
+Therefore, I created a data pipeline that interprets light intensity data and maps summarized values to the respective electrodes from where they originated. The code is easily adaptable to select which values to map, depending on their experimental importance. 
 
 <br>
 
-In the example outlined here, we are using the array to screen electrocatalyst behavior. For the sake of simplicity, I've decided to demo this code with a control example: where half the array is coated with a known electrocatalyst material, and the other half is bare with a non-electrocatalytic surface. We simply wanted to know which electrodes demonstrated the best electrocatalytic activity. This is accomplished by sweeping the potential in the catalytic conditions and monitoring when light generation occurs from each electrode. The earlier the light turns on, the better electrocatalyst it is. 
+In the example outlined here, we are using the array to screen electrocatalyst behavior. For the sake of simplicity, I decided to demo this code with a control example: where half the array is coated with a known electrocatalyst material, and the other half is bare with a non-electrocatalytic surface. We simply wanted to know if our method could distinguish electrocatalytic activity. This is accomplished by sweeping the potential in the catalytic conditions and monitoring when light generation occurs from each electrode. The earlier the light turns on, the better electrocatalyst it is. 
 
 
-I designed the program to analyze the intensity data from each electrode, find at what potential the intensity surpasses a given threshold (turns on), and map that value back onto the electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). Therefore we can examine the generated map and quickly determine which electrodes turned on at which potentials. 
+I designed the program to find the potential at which the intensity surpasses a given threshold (turns on), and map that value back onto each electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). We can therefore examine the generated map and quickly determine
+the potentials where each electrode turned on. 
+
 
 <br>
 
