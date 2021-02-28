@@ -59,7 +59,7 @@ The overall analysis takes ~ 5 minutes to run both scripts, and the final produc
 
 <br>
 
-The raw data file is included in the repo, which exists as a ~750 MB tiff stack containing 1500 frames of 512 x 512 pixels each.
+The raw data file is included in the repository, which exists as a ~750 MB tiff stack containing 1500 frames of 512 x 512 pixels each.
 
 <br> 
 
