@@ -1,5 +1,6 @@
 **Spatially Mapping Bipolar ECL Microelectrode Array Data using Python & ImageJ**
 
+<br>
 
 As part of my doctoral work at the University of Washington, I experimented with newly designed microfabricated devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. Our lab had developed the wireless devices to allow >6000 electrodes to be monitored simultaneously using a light-generation mechanism as the indicator of their activity. Our work improved the spatial resoluiton compared with similar devices in literature by over 20 times. 
 
