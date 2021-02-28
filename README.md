@@ -34,5 +34,5 @@ The data pipeline is split into two separate scripts:
 The overall analysis time takes ~ 5 minutes to complete between both scripts. Yet, the final product generates an easily-interpretable visualization summarizing the critical results of the experiment.
 
 
-***Please view the included Jupyter Notebook for a detailed walkthrough of this project.**
+***Please view the included Jupyter Notebook for a detailed walkthrough of the code.**
 
