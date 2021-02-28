@@ -1,4 +1,4 @@
-**Spatially Mapping Bipolar Microelectrode Array Data using Python & ImageJ**
+**Spatially Mapping Bipolar Microelectrode Array Data**
 
 <br>
 
