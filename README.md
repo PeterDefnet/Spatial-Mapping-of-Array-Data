@@ -45,8 +45,9 @@ The data pipeline is split into two separate scripts:
 
 
 
-**Example Outputs** <br>
-*Note that Github reduces the image resolution
+**Example Outputs** 
+<br>
+*Click the image to view in higher resolution.
 <br>
 
 ![image](https://user-images.githubusercontent.com/69371709/109474120-04efbc00-7a29-11eb-9dcf-b507f5411ff5.png)
