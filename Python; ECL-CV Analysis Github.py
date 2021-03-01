@@ -16,6 +16,7 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
 from skimage import io, measure
+import warnings
 import matplotlib as mpl
 mpl.rcParams['figure.dpi'] = 600 #Changes DPI of in-line figures.
 
