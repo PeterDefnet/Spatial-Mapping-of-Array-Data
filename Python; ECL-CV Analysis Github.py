@@ -60,10 +60,7 @@ df.loc[:,'Y'] = np.round(df.loc[:,'Y'], decimals=0)
 
 
 
-
-
 """Systematically re-label the ROI #'s so that the ordering matches the ImageJ ROI #'s. (Rather than Assuming Python's assignment automatically matches)"""
-
 
 
 def label_ROI(df):
@@ -116,8 +113,6 @@ img_label, img_label_mod = label_ROI(df)
 
 
 
-
-
 """Plot Label #'s on thresholded image."""
  
 
@@ -154,7 +149,6 @@ plot_ROI_image(img_label_mod, title = 'Re-Labeled ROI Image', save = '/Frame # w
 
 
 
-
 #Now values in img_label_mod correspond to ROI #'s in res_sort
 #Therefore, analyses done with res_sort can be heatmapped by changing ROI values in ndarray img_label_mod to desired statistic.  
 #Next, use res_sort to do analyses on ECL-CV data. 
@@ -165,9 +159,6 @@ plot_ROI_image(img_label_mod, title = 'Re-Labeled ROI Image', save = '/Frame # w
 
 df = res_sort[['Mean', 'Slice', 'ROI']]
 df_sort = df.sort_values(['ROI', 'Slice'], ascending = (True, True))
-
-
-
 
 
 
@@ -188,8 +179,6 @@ def map_threshold(df_sort, threshold):
     import seaborn as sns 
 
 
-
-    
     
     '''Determine thresholded frame for each ROI'''
     total_roi = df_sort.ROI.max()
@@ -205,7 +194,6 @@ def map_threshold(df_sort, threshold):
     save.reset_index(inplace=True, drop=True) # 'save' contans a df of frames where threshold is surpassed for all ROI's. 
     
     
-
 
     map_threshold_slice = img_label_mod.copy()
     for i in range(1, int(np.max(save.ROI))+1): #Changes value of img_label_mod to slice # of threshold. 
@@ -232,8 +220,6 @@ def map_threshold(df_sort, threshold):
     
 
     
-
-    
     #Plot Histogram 
     with warnings.catch_warnings(): #Ignore warnings given by deprecation of sns.distplot()
         warnings.simplefilter("ignore")
@@ -250,7 +236,6 @@ def map_threshold(df_sort, threshold):
         plt.tight_layout()
         plt.savefig(save_folder + '/Frame # where Intensity larger ' + str(threshold) + '_Histogram' + '.png', dpi = 600)
         plt.show()
-    
     
     
     
@@ -273,7 +258,6 @@ def map_threshold(df_sort, threshold):
         plt.show()
         
         
-        
     
         #Plot Histogram, KDE of Frame # where intensity threshold is.
         sns.kdeplot(save.mv, shade=True)
@@ -291,18 +275,8 @@ def map_threshold(df_sort, threshold):
     
 
 
-
-
 #Output Plots:
 map_threshold(df_sort, 1000) # intensity 
-
-
-
-
-
-
-
-
 
 
 
