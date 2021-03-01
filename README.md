@@ -45,8 +45,9 @@ The data pipeline is split into two separate scripts:
 
 
 
-**Example Outputs**
-<br><br>
+**Example Outputs** <br>
+*Note that Github reduces the image resolution
+<br>
 
 ![image](https://user-images.githubusercontent.com/69371709/109474120-04efbc00-7a29-11eb-9dcf-b507f5411ff5.png)
 
@@ -56,7 +57,7 @@ The overall analysis takes ~ 5 minutes to run both scripts, and the final produc
 
 <br>
 
-The raw data file is included in the repository, which exists as a ~750 MB tiff stack containing 1500 frames of 512 x 512 pixels each.
+The raw data file is included in the repository, which exists as a ~750 MB tiff stack containing 1500 frames of 512 x 512 pixels each
 
 <br> 
 
