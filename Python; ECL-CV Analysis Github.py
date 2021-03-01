@@ -215,23 +215,8 @@ def map_threshold(df_sort, threshold):
     #Plot Histogram 
     with warnings.catch_warnings(): #Ignore warnings given by deprecation of sns.distplot()
         warnings.simplefilter("ignore")
-    
-        sns.distplot(save.Slice, kde=False, color = 'k',  bins = abs(int(save.Slice.max() - save.Slice.min()))) #1 bin per frame
-        plt.xlabel('Frame #', fontsize = 12)
-        plt.ylabel('# of Electrodes', fontsize = 12)
-        
-        plt.xticks(fontsize = 12)
-        plt.yticks(fontsize = 12)
-        plt.title('Frame # where Intensity > ' + str(threshold), fontsize = 12)
-        plt.xlim(300, 500)
-        
-        plt.tight_layout()
-        plt.savefig(save_folder + '/Frame # where Intensity larger ' + str(threshold) + '_Histogram' + '.png', dpi = 600)
-        plt.show()
-    
-    
-    
-        #Map Threshold mV  #Want base of colorbar to be black or white, but not red. 
+      
+        #Map Threshold mV  
     
         plt.figure(figsize=(12,12))
         plt.imshow(map_threshold_mV, cmap= 'jet_r', vmin = save.mv.min()-30) #Scales so that colorbar min = first threshold - 30 
@@ -250,6 +235,23 @@ def map_threshold(df_sort, threshold):
         plt.show()
         
         
+        
+        #Histogram of Frame # when intensity threshold is surpassed.
+        sns.distplot(save.Slice, kde=False, color = 'k',  bins = abs(int(save.Slice.max() - save.Slice.min()))) #1 bin per frame
+        plt.xlabel('Frame #', fontsize = 12)
+        plt.ylabel('# of Electrodes', fontsize = 12)
+        
+        plt.xticks(fontsize = 12)
+        plt.yticks(fontsize = 12)
+        plt.title('Frame # where Intensity > ' + str(threshold), fontsize = 12)
+        plt.xlim(300, 500)
+        
+        plt.tight_layout()
+        plt.savefig(save_folder + '/Frame # where Intensity larger ' + str(threshold) + '_Histogram' + '.png', dpi = 600)
+        plt.show()
+    
+    
+    
     
         #Plot Histogram, KDE of Frame # where intensity threshold is.
         sns.kdeplot(save.mv, shade=True)
