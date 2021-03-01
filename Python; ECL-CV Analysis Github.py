@@ -149,12 +149,6 @@ plot_ROI_image(img_label_mod, title = 'Re-Labeled ROI Image', save = '/Frame # w
 
 
 
-#Now values in img_label_mod correspond to ROI #'s in res_sort
-#Therefore, analyses done with res_sort can be heatmapped by changing ROI values in ndarray img_label_mod to desired statistic.  
-#Next, use res_sort to do analyses on ECL-CV data. 
-
-
-
 '''Create df's used for analysis functions'''
 
 df = res_sort[['Mean', 'Slice', 'ROI']]
@@ -169,9 +163,7 @@ df_sort = df.sort_values(['ROI', 'Slice'], ascending = (True, True))
 
 
 def map_threshold(df_sort, threshold):
-    '''Input dataframe with columns labeled 'ROI', 'Mean', 'Slice' 
-    Output df with rows as ROI, Mean, Slice where threshold value occurs in each ROI
-    Note that plots are NOT auto-saved'''
+    """Maps the potential where the intensity surpasses the input 'threshold' value"""
         
     import pandas as pd
     import numpy as np
