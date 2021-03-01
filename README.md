@@ -24,18 +24,6 @@ I designed the code to find the potential at which the intensity surpasses a giv
 
 <br>
 
-**Example Outputs**
-
-
-
-Below are example outputs from the program:
-<Brightfield of Array>
-<Blank thresholded Image>
-<Labeled ROIs of Thresholded Image>
-<Mapped Thresholded Image>
-<histogram mV result> 
-  
- <br>
  
  **Code Description**
  
@@ -54,6 +42,15 @@ The data pipeline is split into two separate scripts:
  -- Plots the mapped figure and summary histograms to interpret the results <br>
 
 <br>
+
+
+
+**Example Outputs**
+<br><br>
+
+![image](https://user-images.githubusercontent.com/69371709/109474120-04efbc00-7a29-11eb-9dcf-b507f5411ff5.png)
+
+
 
 The overall analysis takes ~ 5 minutes to run both scripts, and the final product generates an easily-interpretable visualization summarizing the critical results of the experiment!
 
