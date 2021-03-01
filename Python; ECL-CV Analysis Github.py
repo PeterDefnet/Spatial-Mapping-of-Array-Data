@@ -7,6 +7,7 @@ Created on Sat Feb 27 18:00:20 2021
 
 '''Experimental Parameters:'''
 
+
 # scan_rate = 200 #mv/s 
 # voltage_range = 3000 #mv 
 # fps = 30 # For camera
@@ -18,7 +19,7 @@ import matplotlib.pyplot as plt
 from skimage import io, measure
 import warnings
 import matplotlib as mpl
-mpl.rcParams['figure.dpi'] = 600 #Changes DPI of in-line figures.
+mpl.rcParams['figure.dpi'] = 900 #Changes DPI of in-line figures.
 
 
 
@@ -31,7 +32,6 @@ save_folder = file_extension + str(filename_load)
 
 #Load Thresholded Image
 img = io.imread(file_extension + str(filename_load) + '/' + 'thresh_' + str(filename_load) + '.tif')
-
 
 
 
@@ -61,7 +61,10 @@ df.loc[:,'Y'] = np.round(df.loc[:,'Y'], decimals=0)
 
 
 
+
+
 """Systematically re-label the ROI #'s so that the ordering matches the ImageJ ROI #'s. (Rather than Assuming Python's assignment automatically matches)"""
+
 
 
 def label_ROI(df):
@@ -114,13 +117,14 @@ img_label, img_label_mod = label_ROI(df)
 
 
 
+
 """Plot Label #'s on thresholded image."""
  
 
 def plot_ROI_image(img_label, title = "Python Auto-Labled Image", save = "/Python-Labeled Thresholded Image.png"):
     
     
-    plt.figure(figsize=(15, 15))
+    plt.figure(figsize=(12, 12))
     plt.imshow(img_label)
     
     cbar = plt.colorbar()
@@ -131,9 +135,9 @@ def plot_ROI_image(img_label, title = "Python Auto-Labled Image", save = "/Pytho
     plt.yticks(fontsize = 28)
     plt.xlabel('X Pixel', fontsize = 32)
     plt.ylabel('Y Pixel', fontsize = 32)
-    plt.title(title, fontsize = 32)
+    plt.title(title + '\n', fontsize = 32)
     plt.tight_layout()
-    plt.savefig(save_folder + save)
+    plt.savefig(save_folder + save, dpi=900)
     plt.show()    
 
 
@@ -150,6 +154,12 @@ plot_ROI_image(img_label_mod, title = 'Re-Labeled ROI Image', save = '/Frame # w
 
 
 
+#Now values in img_label_mod correspond to ROI #'s in res_sort
+#Therefore, analyses done with res_sort can be heatmapped by changing ROI values in ndarray img_label_mod to desired statistic.  
+#Next, use res_sort to do analyses on ECL-CV data. 
+
+
+
 '''Create df's used for analysis functions'''
 
 df = res_sort[['Mean', 'Slice', 'ROI']]
@@ -159,12 +169,13 @@ df_sort = df.sort_values(['ROI', 'Slice'], ascending = (True, True))
 
 
 
-
 '''Map which ROI's turn on at thresholded Intensity + Plot Histogram of results'''
 
 
 def map_threshold(df_sort, threshold):
-    """Maps the potential where the intensity surpasses the input 'threshold' value"""
+    '''Input dataframe with columns labeled 'ROI', 'Mean', 'Slice' 
+    Output df with rows as ROI, Mean, Slice where threshold value occurs in each ROI
+    Note that plots are NOT auto-saved'''
         
     import pandas as pd
     import numpy as np
@@ -172,6 +183,8 @@ def map_threshold(df_sort, threshold):
     import seaborn as sns 
 
 
+
+    
     
     '''Determine thresholded frame for each ROI'''
     total_roi = df_sort.ROI.max()
@@ -187,6 +200,7 @@ def map_threshold(df_sort, threshold):
     save.reset_index(inplace=True, drop=True) # 'save' contans a df of frames where threshold is surpassed for all ROI's. 
     
     
+
 
     map_threshold_slice = img_label_mod.copy()
     for i in range(1, int(np.max(save.ROI))+1): #Changes value of img_label_mod to slice # of threshold. 
@@ -213,11 +227,14 @@ def map_threshold(df_sort, threshold):
     
 
     
+
+    
     #Plot Histogram 
     with warnings.catch_warnings(): #Ignore warnings given by deprecation of sns.distplot()
         warnings.simplefilter("ignore")
-      
-        #Map Threshold mV  
+    
+    
+        #Map Threshold mV  #Want base of colorbar to be black or white, but not red. 
     
         plt.figure(figsize=(12,12))
         plt.imshow(map_threshold_mV, cmap= 'jet_r', vmin = save.mv.min()-30) #Scales so that colorbar min = first threshold - 30 
@@ -225,19 +242,19 @@ def map_threshold(df_sort, threshold):
         for t in cbar.ax.get_yticklabels():
             t.set_fontsize(28)
     
-        plt.title('Comparison of Ni vs. C for HER \n', fontsize = 32)
-        plt.xticks(fontsize = 32)
-        plt.yticks(fontsize = 32)
+        plt.title('Potential (mV) where Intensity > ' + str(threshold) + '\n', fontsize = 32)
+        plt.xticks(fontsize = 28)
+        plt.yticks(fontsize = 28)
         plt.xlabel('X Pixel', fontsize = 32)
         plt.ylabel('Y Pixel', fontsize = 32)
         plt.tight_layout()
-        plt.savefig(save_folder + '/Potential (mV) with Intensity larger' + str(threshold) + ' Scaled to show variation'+ '.png', dpi = 600)
+        plt.savefig(save_folder + '/Potential (mV) with Intensity larger' + str(threshold) + ' Scaled to show variation'+ '.png', dpi = 900)
     
-        plt.show()
-        
-        
-        
-        #Histogram of Frame # when intensity threshold is surpassed.
+        plt.show()   
+    
+    
+
+        #Plot Histogram, Frame # where intensity > threshold
         sns.distplot(save.Slice, kde=False, color = 'k',  bins = abs(int(save.Slice.max() - save.Slice.min()))) #1 bin per frame
         plt.xlabel('Frame #', fontsize = 12)
         plt.ylabel('# of Electrodes', fontsize = 12)
@@ -248,13 +265,13 @@ def map_threshold(df_sort, threshold):
         plt.xlim(300, 500)
         
         plt.tight_layout()
-        plt.savefig(save_folder + '/Frame # where Intensity larger ' + str(threshold) + '_Histogram' + '.png', dpi = 600)
+        plt.savefig(save_folder + '/Frame # where Intensity larger ' + str(threshold) + '_Histogram' + '.png', dpi = 900)
         plt.show()
     
     
+
     
-    
-        #Plot Histogram, KDE of Frame # where intensity threshold is.
+        #Plot Histogram, KDE of Potential where intensity > threshold.
         sns.kdeplot(save.mv, shade=True)
         plt.title('Potential (mV) where Intensity > ' + str(threshold), fontsize = 12)
         plt.xlabel('Potential (mV)', fontsize = 12)
@@ -264,14 +281,15 @@ def map_threshold(df_sort, threshold):
         plt.xlim(1500, 3000)
         plt.ylim(0, 0.01)
         plt.tight_layout()
-        plt.savefig(save_folder + '/Potential (mV) where Intensity larger ' + str(threshold) + '_kde' + '.png', dpi = 600)
+        plt.savefig(save_folder + '/Potential (mV) where Intensity larger ' + str(threshold) + '_kde' + '.png', dpi = 900)
         plt.show()
         
     
 
 
+
+
 #Output Plots:
 map_threshold(df_sort, 1000) # intensity 
-
 
 
