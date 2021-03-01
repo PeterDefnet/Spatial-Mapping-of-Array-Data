@@ -56,9 +56,6 @@ The data pipeline is split into two separate scripts:
 
 The overall analysis takes ~ 5 minutes to run both scripts, and the final product generates an easily-interpretable visualization summarizing the critical results of the experiment!
 
-<br>
-
-The raw data file is included in the repository, which exists as a ~750 MB tiff stack containing 1500 frames of 512 x 512 pixels each
 
 <br> 
 
