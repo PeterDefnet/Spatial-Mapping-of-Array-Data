@@ -1,64 +1,19 @@
-**Spatially Mapping Bipolar Microelectrode Array Data**
-
-<br>
-
-**Problem Context**
+# Mapping Electrocatalyst Activity across >6000 Conditions Simultaneously
 
 
-As part of my doctoral work at the University of Washington, I experimented with cutting-edge devices called 'bipolar microelectrode arrays' to map redox reactions over a wide sensing area. Our lab had developed the wireless arrays to allow >6000 electrodes to be monitored simultaneously using generated light intensity as the indicator of their activity. Our work improved the spatial resolution compared with similar devices in literature by over 20 times. 
-
-
-_**Yet, their usage posed a real challenge: How can we represent the video data recorded from >6000 unique locations in a digestible format?**_ The ability to interpret _where_ reactions were occurring was necessary, and thus an image mapping approach was used. 
-
-<br>
-
-**Solution Description**
-
-
-To address this problem, I created a data pipeline that interprets light intensity data and maps summarized values to their respective electrode locations. The code is easily adaptable to select which values to map, depending on their experimental importance. 
-
-In the example outlined here, we are using the array to screen for electrocatalyst behavior. For the sake of simplicity, I decided to demo this code with a control example: where half the array is coated with a known electrocatalyst material, and the other half is bare with a non-electrocatalytic surface. We simply wanted to know if our method could distinguish electrocatalytic activity. This is accomplished by sweeping the potential in the catalytic conditions and monitoring when light generation occurs for each electrode. The earlier the light turns on, the better electrocatalyst it is. 
-
-
-I designed the code to find the potential at which the intensity surpasses a given threshold (turns on), and map that value back onto each electrode's respective location. The mapped values are represented by different colors (referenced by the accompanying colorbar beside the plot). We can therefore examine the generated map and quickly determine if the electrocatalytic activity varies across the array.
-
-<br>
-
- 
- **Code Description**
- 
- 
-
-The data pipeline is split into two separate scripts: 
-
-1. The first script (in ImageJ, written in the ImageJ Macro Language): <br>
- -- Identifies the locations of each electrode <br>
- -- Extracts and saves their intensity over time data, labeled per location <br>
- -- Saves a thresholded image of the array (which serves as a blank canvas to map values onto) <br>
-
-2. The second script (in Python): <br>
- -- Analyzes the intensity over time data from each location <br>
- -- Maps a specific value onto the thresholded image in its respective electrode location <br>
- -- Plots the mapped figure and summary histograms to interpret the results <br>
-
-<br>
+Here I described a data pipeline used in mh Ph.D. lab for mapping electrocatalyst activity from an array of  
 
 
 
-**Example Outputs** 
-<br>
-*Click the image to view in higher resolution.
-<br>
 
-![image](https://user-images.githubusercontent.com/69371709/109474120-04efbc00-7a29-11eb-9dcf-b507f5411ff5.png)
+#Here I quantify the interparticle spacing between thousands of nanoparticles randomly positioned on a substrate. The pipeline automates the characterization of novel electrode arrays made in my Ph.D. lab. 
 
 
-
-The overall analysis takes ~ 5 minutes to run both scripts, and the final product generates an easily-interpretable visualization summarizing the critical results of the experiment!
-
-
-<br> 
+* Check out an associated blogpost [here](https://peterdefnet.github.io/portfolio/portfolio-2/)
 
 
-***Please view the included Jupyter Notebook for a detailed walkthrough of this project.**
+* View a walkthrough of the code in a Jupyter notebook [here](https://nbviewer.jupyter.org/github/PeterDefnet/Spatially-Mapping-Bipolar-Microelectrode-Array-Data/blob/master/Notebooks/Spatial%20Mapping%20Updated%3B%20July%2010%2C%202021.ipynb)
+
+
+
 
