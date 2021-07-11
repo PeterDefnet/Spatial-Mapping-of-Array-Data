@@ -12,7 +12,7 @@ Here I described a data pipeline used in mh Ph.D. lab for mapping electrocatalys
 * Check out an associated blogpost [here](https://peterdefnet.github.io/portfolio/portfolio-2/)
 
 
-* View a walkthrough of the code in a Jupyter notebook [here](https://nbviewer.jupyter.org/github/PeterDefnet/Spatially-Mapping-Bipolar-Microelectrode-Array-Data/blob/master/Notebooks/Spatial%20Mapping%20Updated%3B%20July%2010%2C%202021.ipynb)
+* View a walkthrough of the code in a hosted Jupyter notebook [here](https://nbviewer.jupyter.org/github/PeterDefnet/Spatially-Mapping-Bipolar-Microelectrode-Array-Data/blob/master/Notebooks/Spatial%20Mapping%20Updated%3B%20July%2010%2C%202021.ipynb)
 
 
 
