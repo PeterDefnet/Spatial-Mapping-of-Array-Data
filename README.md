@@ -1,7 +1,7 @@
 # Mapping Electrocatalyst Activity across >6000 Conditions Simultaneously
 
 
-Here I describe a data pipeline that I developed for my Ph.D. research lab that maps electrocatalyst activities from over 6000 unique electrode materials. The result is a single, easily interpretable image.
+Here I describe a data pipeline that I developed for my Ph.D. research lab that maps electrocatalyst activities from over 6000 unique electrode materials. The result is a single, easily interpretable figure.
 
 <br>
 
