@@ -1,4 +1,4 @@
-# Mapping Electrocatalyst Activity across >6000 Conditions Simultaneously
+# Spatial Mapping of Array Data
 
 
 Here I map the electrocatalytic activities from over 6000 unique electrode materials to a single figure. The pipeline facilitates the interpretation of array-based experiments in my Ph.D. lab. 
